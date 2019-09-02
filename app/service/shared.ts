@@ -86,3 +86,12 @@ export type HomeBanner = {
 }
 
 export type HomeBanners = Array<HomeBanner>
+
+// 首页24小时
+export type Hours24Content = {
+  user_name: String,
+  user_avatar: String,
+  content: String
+}
+
+export type Hours24Contens = Array<Hours24Content>

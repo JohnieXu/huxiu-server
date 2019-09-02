@@ -9,6 +9,7 @@ export default (app: Application) => {
   // 首页
   router.get(`${BASE_URL}/home/article_list`, controller.home.articleList);
   router.get(`${BASE_URL}/home/banner_list`, controller.home.bannerList);
+  router.get(`${BASE_URL}/home/hours24_list`, controller.home.hours24List);
   // 24小时
   router.get(`${BASE_URL}/hours24/news_list`, controller.hours24.newsList);
   router.get(`${BASE_URL}/hours24/hot_list`, controller.hours24.hotList);

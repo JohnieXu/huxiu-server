@@ -36,4 +36,13 @@ export default class HomeController extends Controller {
       ctx.body = responseJson(false, '未知异常', e)
     }
   }
+  public async hours24List() {
+    const { ctx } = this
+    try {
+      const data = await ctx.service.home.hours24List();
+      ctx.body = responseJson(true, '', data)
+    } catch(e) {
+      ctx.body = responseJson(false, '未知异常', e)
+    }
+  }
 }
