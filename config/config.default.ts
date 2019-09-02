@@ -1,7 +1,16 @@
 import { EggAppConfig, EggAppInfo, PowerPartial } from 'egg';
 
 export default (appInfo: EggAppInfo) => {
-  const config = {} as PowerPartial<EggAppConfig>;
+  const config = {
+    security: {
+      csrf: false,
+      domainWhiteList: ['http://localhost:3000']
+    },
+    cors: {
+      origin: '*',
+      allowMethods: '*'
+    }
+  } as PowerPartial<EggAppConfig>;
 
   // override config from framework / plugin
   // use for cookie sign key, should change to your own and keep security
