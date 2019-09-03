@@ -1,97 +1,104 @@
 
-export type Articles = Array<Article>
-export type Hots = Array<Hot>
+export type Articles = Article[];
+export type Hots = Hot[];
 
 // 文章类型
 export const enum ArticleType {
   Normal = 'normal',
   Image = 'picture',
-  Video = 'video'
+  Video = 'video',
 }
 
-export type BasicArticle = {
-  id: Number,
-  meta: ArticleMeta,
-  user: User,
-  type: ArticleType,
-  images?: Array<Image>
-  video_url?: String,
+export interface BasicArticle {
+  id: number;
+  meta: ArticleMeta;
+  user: User;
+  type: ArticleType;
+  images?: Image[];
+  video_url?: string;
 }
 
 export type Article = BasicArticle & {
-  content: String,
-  is_liked: Boolean
+  content: string,
+  is_liked: boolean,
+};
+
+export interface ArticleMeta {
+  created_at: string;
+  share_link?: string;
 }
 
-export type ArticleMeta = {
-  created_at: String,
-  share_link?: String
+export interface Image {
+  thumbnail: string;
+  url: string;
 }
 
-export type Image = {
-  thumbnail: String,
-  url: String
+export interface User {
+  id: number;
+  name: string;
+  slogo: string;
+  avatar: string;
+  is_authorized: boolean;
+  is_followed: boolean;
 }
 
-export type User = {
-  id: Number,
-  name: String,
-  slogo: String,
-  avatar: String,
-  is_authorized: Boolean,
-  is_followed: Boolean
+export interface NewsImage {
+  name: string;
+  url: string;
 }
 
-export type NewsImage = {
-  name: String,
-  url: String
-}
-
-export type News = {
-  content: String,
-  origin_url?: String,
-  images?: NewsImage[],
-  votes?: [String, String, String, String]
+export interface News {
+  content: string;
+  origin_url?: string;
+  images?: NewsImage[];
+  votes?: [string, string, string, string];
 }
 
 // 热点背景图尺寸比例
 export const enum HotCoverSize {
   horizental = '16:9',
-  vertical = '10:16'
+  vertical = '10:16',
 }
 
-export type Hot = {
-  id: Number,
-  tag: String,
-  title: String,
-  created_at: String,
-  join_count: Number,
-  cover: String,
-  size: HotCoverSize
+export interface Hot {
+  id: number;
+  tag: string;
+  title: string;
+  created_at: string;
+  join_count: number;
+  cover: string;
+  size: HotCoverSize;
 }
 
 export type HomeArticle = BasicArticle & {
-  title: String,
-  tag: String,
-  favorite_count: Number
-}
+  title: string,
+  tag: string,
+  favorite_count: number,
+};
 
-export type HomeArticles = Array<HomeArticle>
+export type HomeArticles = HomeArticle[];
 
 // 首页轮播
-export type HomeBanner = {
-  id: Number,
-  title: String,
-  image_url: String
+export interface HomeBanner {
+  id: number;
+  title: string;
+  image_url: string;
 }
 
-export type HomeBanners = Array<HomeBanner>
+export type HomeBanners = HomeBanner[];
 
 // 首页24小时
-export type Hours24Content = {
-  user_name: String,
-  user_avatar: String,
-  content: String
+export interface Hours24Content {
+  user_name: string;
+  user_avatar: string;
+  content: string;
 }
 
-export type Hours24Contens = Array<Hours24Content>
+export type Hours24Contens = Hours24Content[];
+
+// 首页App推广链接
+export interface AppLinkImage {
+  image_url: string;
+  link_url: string;
+  tag?: string;
+}

@@ -4,12 +4,12 @@ export default (appInfo: EggAppInfo) => {
   const config = {
     security: {
       csrf: false,
-      domainWhiteList: ['http://localhost:3000']
+      domainWhiteList: [ 'http://localhost:3000' ],
     },
     cors: {
       origin: '*',
-      allowMethods: '*'
-    }
+      allowMethods: '*',
+    },
   } as PowerPartial<EggAppConfig>;
 
   // override config from framework / plugin
