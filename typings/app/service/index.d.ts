@@ -3,6 +3,7 @@
 
 import 'egg';
 import ExportTest from '../../../app/service/Test';
+import ExportBase from '../../../app/service/base';
 import ExportHome from '../../../app/service/home';
 import ExportHours24 from '../../../app/service/hours24';
 import ExportShared from '../../../app/service/shared';
@@ -10,6 +11,7 @@ import ExportShared from '../../../app/service/shared';
 declare module 'egg' {
   interface IService {
     test: ExportTest;
+    base: ExportBase;
     home: ExportHome;
     hours24: ExportHours24;
     shared: ExportShared;

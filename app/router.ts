@@ -11,6 +11,7 @@ export default (app: Application) => {
   router.get(`${BASE_URL}/home/banner_list`, controller.home.bannerList);
   router.get(`${BASE_URL}/home/hours24_list`, controller.home.hours24List);
   router.get(`${BASE_URL}/home/app_link_image`, controller.home.appLinkImage);
+  router.get(`${BASE_URL}/base/all_categories`, controller.base.getAllCategories);
   // 24小时
   router.get(`${BASE_URL}/hours24/news_list`, controller.hours24.newsList);
   router.get(`${BASE_URL}/hours24/hot_list`, controller.hours24.hotList);
