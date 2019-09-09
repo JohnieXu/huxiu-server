@@ -10,6 +10,19 @@ export default (appInfo: EggAppInfo) => {
       origin: '*',
       allowMethods: '*',
     },
+    mysql: {
+      client: {
+        host: '127.0.0.1',
+        port: '3306',
+        user: 'root',
+        password: '123456',
+        database: 'huxiu',
+      },
+      // 是否挂载到app上 默认：true
+      app: true,
+      // 是否挂载到agent上 默认：false
+      agent: false,
+    },
   } as PowerPartial<EggAppConfig>;
 
   // override config from framework / plugin

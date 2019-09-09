@@ -1,6 +1,6 @@
 import { Service } from 'egg';
 
-type Category = {
+interface Category {
   title: string,
   id: number,
   pid?: number,
