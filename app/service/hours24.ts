@@ -1,7 +1,7 @@
 import { Service } from 'egg';
 
 // types
-import { Articles, ArticleType, HotCoverSize, News, Hots } from './shared';
+import { Articles, EnumArticleType, HotCoverSize, News, Hots } from './shared';
 
 export default class Hours24 extends Service {
   public async newsList(): Promise<Articles> {
@@ -22,7 +22,7 @@ export default class Hours24 extends Service {
         },
         content: '蔡崇信1/3身家投向NBA：科技新贵们的“奢侈爱好”',
         is_liked: false,
-        type: ArticleType.Normal,
+        type: EnumArticleType.Normal,
         images: [
           {
             thumbnail: 'https://img.huxiucdn.com/article/cover/201908/27/110209840139.jpg?imageView2/1/w/1350/h/759/|imageMogr2/strip/interlace/1/quality/85/format/jpg',
@@ -46,8 +46,10 @@ export default class Hours24 extends Service {
       },
     ];
   }
-  public async postNews(data: News) {
+  public async postNews(data: News): Promise<News> {
     console.log(data);
-    return {};
+    return {
+      content: '',
+    };
   }
 }

@@ -1,5 +1,5 @@
 import { Service } from 'egg';
-import { ArticleType, HomeArticles, HomeBanners, Hours24Contens, AppLinkImage } from './shared';
+import { EnumArticleType, HomeArticles, HomeBanners, Hours24Contens, AppLinkImage } from './shared';
 
 export default class Home extends Service {
   public async articleList(): Promise<HomeArticles> {
@@ -14,7 +14,7 @@ export default class Home extends Service {
           },
         ],
         tag: '原创',
-        type: ArticleType.Normal,
+        type: EnumArticleType.Normal,
         user: {
           id: 0,
           name: 'JohnieXu',

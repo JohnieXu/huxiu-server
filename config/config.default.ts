@@ -21,7 +21,7 @@ export default (appInfo: EggAppInfo) => {
       // 是否挂载到app上 默认：true
       app: true,
       // 是否挂载到agent上 默认：false
-      agent: false,
+      agent: true,
     },
   } as PowerPartial<EggAppConfig>;
 

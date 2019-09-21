@@ -27,6 +27,9 @@ export default class HomeController extends Controller {
       ctx.body = responseJson(false, '未知异常', e);
     }
   }
+  /**
+   * 首页轮播图
+   */
   public async bannerList() {
     const { ctx } = this;
     try {
@@ -36,6 +39,9 @@ export default class HomeController extends Controller {
       ctx.body = responseJson(false, '未知异常', e);
     }
   }
+  /**
+   * 首页24小时新闻
+   */
   public async hours24List() {
     const { ctx } = this;
     try {
@@ -45,6 +51,9 @@ export default class HomeController extends Controller {
       ctx.body = responseJson(false, '未知异常', e);
     }
   }
+  /**
+   * APP推广图
+   */
   public async appLinkImage() {
     const { ctx } = this;
     try {
