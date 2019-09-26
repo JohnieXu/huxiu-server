@@ -16,27 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `article`
+-- Dumping data for table `article`
 --
 
-DROP TABLE IF EXISTS `article`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `article` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL COMMENT '文章发布者ID',
-  `type` varchar(10) DEFAULT NULL COMMENT '文章类型 normal | picture | video',
-  `images` varchar(100) DEFAULT NULL COMMENT '首页图片',
-  `video_url` varchar(100) DEFAULT NULL COMMENT '视频URL',
-  `content` varchar(500) DEFAULT NULL COMMENT '文章类容',
-  `created_at` timestamp(6) NULL DEFAULT NULL COMMENT '发布时间',
-  `share_link` varchar(45) DEFAULT NULL COMMENT '文章分享链接',
-  `content_type` varchar(45) NOT NULL DEFAULT 'default' COMMENT '文章内容样式 默认：default',
-  PRIMARY KEY (`id`),
-  KEY `fk_article_user_id` (`user_id`),
-  CONSTRAINT `fk_article_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='文章';
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `article` WRITE;
+/*!40000 ALTER TABLE `article` DISABLE KEYS */;
+/*!40000 ALTER TABLE `article` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -47,4 +33,4 @@ CREATE TABLE `article` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-21 14:46:06
+-- Dump completed on 2019-09-27  0:29:29

@@ -16,12 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Dumping data for table `24hours`
+-- Dumping data for table `role`
 --
 
-LOCK TABLES `24hours` WRITE;
-/*!40000 ALTER TABLE `24hours` DISABLE KEYS */;
-/*!40000 ALTER TABLE `24hours` ENABLE KEYS */;
+LOCK TABLES `role` WRITE;
+/*!40000 ALTER TABLE `role` DISABLE KEYS */;
+INSERT INTO `role` VALUES (1,'默认角色',NULL,0,1,'2019-09-26 15:37:14','2019-09-26 15:37:14');
+/*!40000 ALTER TABLE `role` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

@@ -16,25 +16,14 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user`
+-- Dumping data for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
-  `name` varchar(45) NOT NULL COMMENT '用户名',
-  `slogo` varchar(45) DEFAULT NULL COMMENT '个性签名',
-  `avatar` varchar(100) DEFAULT NULL COMMENT '头像',
-  `is_authorized` tinyint(2) NOT NULL DEFAULT '0' COMMENT '是否认证 默认：0',
-  `type` tinyint(2) DEFAULT NULL COMMENT '用户类型  0：普通用户 1：组织机构 2：个人创作者 3：官方账号',
-  `password` varchar(100) DEFAULT NULL COMMENT '登录密码',
-  `is_vip` int(2) NOT NULL DEFAULT '0' COMMENT '是否VIP 默认：0',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户';
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'admin',NULL,NULL,0,NULL,'123456',0,1),(2,'admin01',NULL,NULL,0,NULL,'123456',0,1),(3,'admin02',NULL,NULL,0,NULL,'123456',0,1);
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -45,4 +34,4 @@ CREATE TABLE `user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-21 14:46:07
+-- Dump completed on 2019-09-27  0:29:28
