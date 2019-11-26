@@ -29,6 +29,32 @@ export default class Base extends Controller {
     }
   }
   /**
+   * 用户基本信息
+   */
+  public async getUserInfo() {
+    const { ctx } = this;
+    const { username } = ctx.params;
+    try {
+      const data = await ctx.service.user.userInfo(username);
+      ctx.body = responseJson(true, '', data);
+    } catch (e) {
+      ctx.body = responseJson(false, e.message || '未知异常', e);
+    }
+  }
+  /**
+   * 用户信息（带权限信息）
+   */
+  public async getUserInfoWithPermission() {
+    const { ctx } = this;
+    const { username } = ctx.params;
+    try {
+      const data = await ctx.service.user.userInfoWithPermission(username);
+      ctx.body = responseJson(true, '', data);
+    } catch (e) {
+      ctx.body = responseJson(false, e.message || '未知异常', e);
+    }
+  }
+  /**
    * 获取全部文章分类
    */
   public async getAllCategories() {
