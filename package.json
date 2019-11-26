@@ -24,8 +24,10 @@
   "dependencies": {
     "egg": "^2.6.1",
     "egg-cors": "^2.2.0",
+    "egg-jwt": "^3.1.7",
     "egg-mysql": "^3.0.0",
-    "egg-scripts": "^2.6.0"
+    "egg-scripts": "^2.6.0",
+    "utility": "^1.16.3"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.40",

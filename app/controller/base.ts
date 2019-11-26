@@ -12,7 +12,20 @@ export default class Base extends Controller {
       const data = await ctx.service.base.createUser(user);
       ctx.body = responseJson(true, '', data);
     } catch (e) {
-      ctx.body = responseJson(false, '未知异常', e);
+      ctx.body = responseJson(false, e.message || '未知异常', e);
+    }
+  }
+  /**
+   * 用户登录
+   */
+  public async userLogin() {
+    const { ctx } = this;
+    const user = ctx.request.body;
+    try {
+      const data = await ctx.service.user.login(user);
+      ctx.body = responseJson(true, '', data);
+    } catch (e) {
+      ctx.body = responseJson(false, e.message || '未知异常', e);
     }
   }
   /**
@@ -24,7 +37,7 @@ export default class Base extends Controller {
       const data = await ctx.service.base.getAllCategories();
       ctx.body = responseJson(true, '', data);
     } catch (e) {
-      ctx.body = responseJson(false, '未知异常', e);
+      ctx.body = responseJson(false, e.message || '未知异常', e);
     }
   }
   /**
@@ -37,7 +50,7 @@ export default class Base extends Controller {
       const data = await ctx.service.base.createCategory(category);
       ctx.body = responseJson(false, '', data);
     } catch (e) {
-      ctx.body = responseJson(false, '未知异常', e);
+      ctx.body = responseJson(false, e.message || '未知异常', e);
     }
   }
 }

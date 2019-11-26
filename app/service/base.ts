@@ -1,4 +1,5 @@
 import { Service } from 'egg';
+import * as utils from 'utility';
 
 interface Category {
   title: string;
@@ -12,8 +13,9 @@ export default class Base extends Service {
    * 用户注册
    * @param user 用户资料
    */
-  public async createUser(user): Promise<any> {
-    let res = await this.app.mysql.insert('user', user);
+  public async createUser(user: { username: string, password: string }): Promise<any> {
+    user.password = utils.sha256(user.password);
+    let res = await this.app.mysql.insert('user', { name: user.username, password: user.password }) as any;
     const insertId = res.insertId;
     if (insertId) {
       res = await this.app.mysql.get('user', {
@@ -35,7 +37,7 @@ export default class Base extends Service {
    * @param category 文章分类
    */
   public async createCategory(category): Promise<any> {
-    let res = await this.app.mysql.insert('article_type', category);
+    let res = await this.app.mysql.insert('article_type', category) as any;
     const insertId = res.insertId;
     if (insertId) {
       res = await this.app.mysql.get('article_type', {

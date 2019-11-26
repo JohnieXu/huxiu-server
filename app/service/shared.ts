@@ -125,3 +125,19 @@ export interface AppLinkImage {
   link_url: string;
   tag?: string;
 }
+
+// 评论
+export interface Comment {
+  id: number;
+  user: User;
+  article_id?: number;
+  parent_id?: number;
+  content: string;
+  liked?: string;
+  unliked?: string;
+  created_at: Date;
+  updated_at?: Date;
+}
+
+// 评论列表
+export type Comments = Comment[];

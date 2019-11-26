@@ -1,7 +1,10 @@
 import { Service } from 'egg';
-import { EnumArticleType, HomeArticles, HomeBanners, Hours24Contens, AppLinkImage } from './shared';
+import { EnumArticleType, HomeArticles, HomeBanners, Hours24Contens, AppLinkImage, Article, Comments, Comment } from './shared';
 
 export default class Home extends Service {
+  /**
+   * 查询首页文章列表
+   */
   public async articleList(): Promise<HomeArticles> {
     return [
       {
@@ -30,6 +33,10 @@ export default class Home extends Service {
       },
     ];
   }
+  /**
+   * 查询轮播图
+   * @param limit 最大数量
+   */
   public async bannerList(limit: number = 3): Promise<HomeBanners> {
     console.log(limit);
     return [
@@ -50,6 +57,10 @@ export default class Home extends Service {
       },
     ];
   }
+  /**
+   * 分页查询24小时列表
+   * @param limit 最大数量
+   */
   public async hours24List(limit: number = 5): Promise<Hours24Contens> {
     console.log(limit);
     return [
@@ -65,10 +76,60 @@ export default class Home extends Service {
       },
     ];
   }
+  /**
+   * 获取应用推广图片
+   */
   public async appLinkImage(): Promise<AppLinkImage> {
     return {
       image_url: 'https://static.huxiucdn.com/m/image/moment_ad_banner.png',
       link_url: 'https://a.app.qq.com/o/simple.jsp?pkgname=com.huxiu',
+    };
+  }
+  /**
+   * 查询文章详情
+   * @param articleId 文章ID
+   */
+  public async articleDetail(articleId: string | number): Promise<Article> {
+    const res = await this.app.mysql.get('article', {
+      id: articleId,
+    });
+    return res;
+  }
+  /**
+   * 查询文章评论(带层级)
+   * @param commentId 评论ID
+   */
+  public async articleComments(articleId: string | number): Promise<Comments> {
+    // TODO: 区分热门评论和最新评论
+    const res = await this.app.mysql.query('comment', {
+      id: articleId,
+    });
+    return res;
+  }
+  /**
+   * 添加评论
+   * @param comment 评论内容
+   */
+  public async createComment(comment: {
+    user_id: string | number,
+    content: string,
+    parent_id?: string | number,
+    article_id?: string | number,
+  }): Promise<Comment> {
+    const res = await this.app.mysql.insert('comment', comment);
+    console.log(res);
+    return {
+      id: 0,
+      user: {
+        id: 0,
+        name: '',
+        slogo: '',
+        avatar: '',
+        is_authorized: false,
+        is_followed: false,
+      },
+      content: '',
+      created_at: new Date(),
     };
   }
 }

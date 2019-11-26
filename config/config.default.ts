@@ -23,6 +23,10 @@ export default (appInfo: EggAppInfo) => {
       // 是否挂载到agent上 默认：false
       agent: true,
     },
+    jwt: {
+      secret: '123456',
+      timeout: 60 * 60 * 24 * 1000, // 过期时间
+    },
   } as PowerPartial<EggAppConfig>;
 
   // override config from framework / plugin
