@@ -8,6 +8,7 @@ export interface ICommonUser {
 }
 
 export interface IUserLogin {
+  id: number;
   name: string;
   token: string;
 }
@@ -51,6 +52,17 @@ export default class User extends Service {
     };
   }
   /**
+   * 退出登录
+   * @param user 登录账号及token
+   */
+  public async logout(token: string): Promise<any> {
+    const { success, message } = await this.service.token.remove(token);
+    if (success) {
+      return Promise.resolve();
+    }
+    return Promise.reject(message);
+  }
+  /**
    * 查询用户基本信息
    * @param username 用户名
    */
@@ -69,5 +81,9 @@ export default class User extends Service {
     const user = await this.app.mysql.query('SELECT user.id as user_id, user.name as user_name, user.avatar as avatar, role.name as role_name FROM user LEFT JOIN role ON user.role_id=role.id WHERE user.name=?', username);
     return user;
   }
-  // 用户注销
+  // 用户销户
+  public async deleteUser(username: string): Promise<any> {
+    // TODO: 删除用户信息等数据
+    return username;
+  }
 }

@@ -1,7 +1,7 @@
 export interface ResponseJson {
   code: number;
   message: string;
-  data: string | number | object | any[];
+  data: string | number | object | any[] | null;
 }
 
 /**
@@ -10,7 +10,7 @@ export interface ResponseJson {
  * @param message 失败提示信息
  * @param data 返回数据
  */
-export function responseJson(success: boolean, message: string, data: string | number | object | any[]): ResponseJson {
+export function responseJson(success: boolean, message: string, data: string | number | object | any[] | null): ResponseJson {
   return {
     code: success ? 0 : 1,
     message,

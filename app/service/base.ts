@@ -15,15 +15,19 @@ export default class Base extends Service {
    */
   public async createUser(user: { username: string, password: string }): Promise<any> {
     user.password = utils.sha256(user.password);
-    let res = await this.app.mysql.insert('user', { name: user.username, password: user.password }) as any;
-    const insertId = res.insertId;
+    const res1 = await this.app.mysql.get('user', { name: user.username });
+    if (res1) {
+      throw Error('此用户名已被注册');
+    }
+    let res2 = await this.app.mysql.insert('user', { name: user.username, password: user.password }) as any;
+    const insertId = res2.insertId;
     if (insertId) {
-      res = await this.app.mysql.get('user', {
+      res2 = await this.app.mysql.get('user', {
         id: insertId,
       });
     }
-    delete res.password;
-    return res;
+    delete res2.password;
+    return res2;
   }
   /**
    * 获取全部文章分类

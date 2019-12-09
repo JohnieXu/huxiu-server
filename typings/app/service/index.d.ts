@@ -7,6 +7,7 @@ import ExportBase from '../../../app/service/base';
 import ExportHome from '../../../app/service/home';
 import ExportHours24 from '../../../app/service/hours24';
 import ExportShared from '../../../app/service/shared';
+import ExportToken from '../../../app/service/token';
 import ExportUser from '../../../app/service/user';
 
 declare module 'egg' {
@@ -16,6 +17,7 @@ declare module 'egg' {
     home: ExportHome;
     hours24: ExportHours24;
     shared: ExportShared;
+    token: ExportToken;
     user: ExportUser;
   }
 }

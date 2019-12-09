@@ -19,9 +19,10 @@ export default (app: Application) => {
   router.post(genUrl('/hours24/post_news'), controller.hours24.postNews);
   // 基础接口
   router.post(genUrl('/base/user/register'), controller.base.createUser);
-  router.get(genUrl('/base/user/:username'), controller.base.getUserInfo);
   router.get(genUrl('/base/user_permission/:username'), controller.base.getUserInfoWithPermission);
   router.post(genUrl('/base/user/login'), controller.base.userLogin);
+  router.get(genUrl('/base/user/logout'), controller.base.userLogout);
+  router.get(genUrl('/base/user/:username'), controller.base.getUserInfo);
   router.get(genUrl('/base/all_categories'), controller.base.getAllCategories);
   router.post(genUrl('/base/create_category'), tokenRequired, controller.base.createCategory);
 };
