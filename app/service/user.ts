@@ -44,7 +44,7 @@ export default class User extends Service {
     if (!res) {
       return Promise.reject(new Error('用户名或密码错误'));
     }
-    const token = this.app.jwt.sign(user, this.app.config.jwt.secret)
+    const token = this.app.jwt.sign(user, this.app.config.jwt.secret);
     delete res.password;
     return {
       ...res,
@@ -83,7 +83,11 @@ export default class User extends Service {
   }
   // 用户销户
   public async deleteUser(username: string): Promise<any> {
-    // TODO: 删除用户信息等数据
-    return username;
+    let user = await this.app.mysql.get('user', { name: username });
+    if (!user) {
+      return Promise.reject('用户不存在');
+    }
+    user = await this.app.mysql.query('UPDATE user SET is_deleted=1 where name=?', username);
+    return Promise.resolve();
   }
 }
